@@ -23,7 +23,7 @@ puts "Init hash from file: #{Time.now - start} seconds!"
 start = Time.new
 File.open("comprehensive_english_word_list.txt", "r") do |infile|
   while (line = infile.gets)
-    rbtree[line.chomp]
+    rbtree[line.chomp] = true
   end
 end
 puts "Init rbtree from file: #{Time.now - start} seconds!"
@@ -35,7 +35,7 @@ File.open("comprehensive_english_word_list.txt", "r") do |infile|
   end
 end
 puts "Init trie from file: #{Time.now - start} seconds!"
-
+puts ""
 #reset 
 hash = Hash.new
 trie = Trie.new
@@ -64,7 +64,7 @@ words.each do |word|
   trie.add(word)
 end
 puts "Init trie from array: #{Time.now - start} seconds!"
-
+puts ""
 dummy = false
 start = Time.new
 words.sample(1000000).each do |word|
@@ -83,7 +83,7 @@ words.sample(1000000).each do |word|
   dummy = trie.find(word)
 end
 puts "Test 1000000 words in a trie: #{Time.now - start} seconds!"
-
+puts ""
 start = Time.new
 words.sample(1000000).each do |word|
   dummy = hash[word + "abc"]

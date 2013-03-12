@@ -6,6 +6,7 @@ class Trie
     @root = Hash.new
   end
   
+  #use for a single word
   def add(word)
     node = @root
     word.downcase!
@@ -16,6 +17,7 @@ class Trie
     node[:end] = true
   end
   
+  #use for an array of words
   def build(words)
     words.each do |word|
       self.add(word)
